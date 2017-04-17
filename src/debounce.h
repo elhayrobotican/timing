@@ -5,7 +5,7 @@
 #define DEBOUNCE_H
 
 #include "Arduino.h"
-#include "../timer/Timer.h"
+#include "timer.h"
 
 //TODO: edit this lib
 //TODO: test this lib
@@ -14,12 +14,24 @@ class Debounce
 {
 private:
     Timer _timer;
-    int _state;
     int _pin;
 
 public:
-    Debounce(int pin, int interval);
-    int readState();
+    Debounce(int interval)
+    {
+            _timer.setDelay(interval);
+    }
+    
+    //returns -1 while debounce still running, or the state when done
+    int readState(int pin)
+    {
+         _timer.start();
+
+        if (_timer.finished())
+            return digitalRead(pin); //done reading button state
+
+        return -1; //still reading button state
+    }
 };
 
 #endif //DEBOUNCE_H
