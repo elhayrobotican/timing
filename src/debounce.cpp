@@ -13,14 +13,10 @@ Debounce::Debounce(int pin, int interval)
 //returns -1 while debounce still running, or the state when done
 int Debounce::readState()
 {
-    int newState = digitalRead(_pin);
-
     _timer.start();
 
-    if (_state != newState)
-        _state = newState;
     if (_timer.finished())
-        return _state; //done reading button state
+        return digitalRead(_pin); //done reading button state
 
     return -1; //still reading button state
 }
