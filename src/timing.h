@@ -30,6 +30,7 @@
 
 //TODO: test this as a one header file
 //TODO: create new REAME that explains how to include lib as one file, or seperate headers
+//TODO: add to strober support of RGB led notes, and create notes object instead of numbers
 
 #ifndef TIMING_H
 #define TIMING_H
