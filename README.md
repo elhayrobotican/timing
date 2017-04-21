@@ -63,6 +63,7 @@ Array size must be even, because each note is a pair i.e. [note, interval], so t
 note value can be 0 or 1, and interval is the time (in milliseconds) to wait asynchronically before playing next note.
 
 For full example go to [here](https://github.com/elhayr1/timing/blob/master/examples/emergency_monitor/emergency_monitor.ino).
+
 ----------------------------------------------------------------------
 
 # 3. Timer
