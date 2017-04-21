@@ -2,6 +2,12 @@
 Timing library is a combination of time-based tools for fast and easy usage.
 This readme file explain and demonstrate the use of these tools
 
+## Usage
+To use Timing library, include its file header in your code.
+```
+#include "timing.h"
+```
+
 ----------------------------------------------------------------------
 ## 1. Debounce 
 If you are using a physical button on your board, and trying to digitaRead() from it, you might want to use Debounce to make sure the reading is correct. Bouncing is the tendency of any two metal contacts in an electronic device to generate multiple signals as the contacts close or open; debouncing is any kind of hardware device or software that ensures that only a single signal will be acted upon for a single opening or closing of a contact) 
@@ -19,17 +25,13 @@ Strober depends on Timer class to operate properly. Timer class is included in T
 
 ### 2.2 Usage
 Using strober is easy. 
-1. include strober header. e.g.
-```
-#include "strober.h"
-```
 
-2. Create new Strober instance. e.g.
+1. Create new Strober instance. e.g.
 ```
 Strober strober;
 ```
 
-3. Set initial led notes. e.g.
+2. Set initial led notes. e.g.
 ```
 void setup()
 {
@@ -39,7 +41,7 @@ void setup()
 }
 ```
 
-4. Invoke play() method inside loop(), and set notes in run time according to your needs. e.g.
+3. Invoke play() method inside loop(), and set notes in run time according to your needs. e.g.
 ```
 void loop()
 {
@@ -72,17 +74,13 @@ Async timer
 This library allow you to set and use timers easily over Arduino platform. Timer implementation is asynchroncally, meaning your microcontroller loop will keep running, as opposed to Arduino's delay() function for example. This is very important if you want your board to keep doing thing in the background while using timer.
 
 ### 3.1 Usage
-Include Timer header file
-```
-#include "timer.h"
-```
 
-Create a new Timer instance
+1. Create a new Timer instance
 ```
 Timer keep_alive_timer;
 ```
 
-Start the timer, and do something when it's finished
+2. Start the timer, and do something when it's finished
 
 ```
 void loop()
