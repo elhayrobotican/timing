@@ -66,12 +66,12 @@ For full example go to [here](https://github.com/elhayr1/timing/blob/master/exam
 
 ----------------------------------------------------------------------
 
-# 3. Timer
+## 3. Timer
 Async timer
 
 This library allow you to set and use timers easily over Arduino platform. Timer implementation is asynchroncally, meaning your microcontroller loop will keep running, as opposed to Arduino's delay() function for example. This is very important if you want your board to keep doing thing in the background while using timer.
 
-# 3.1 Usage
+### 3.1 Usage
 Include Timer header file
 ```
 #include "timer.h"
