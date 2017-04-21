@@ -28,24 +28,24 @@
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ****************************************************************************/
 
-#include "led_strober.h"
+#include "strober.h"
 
 /**************************************************************
 * Predefined notes arrays. Odd indexes are async delays (in 
 * milliseconds), pair indexes are notes to play (0 - led off, 
 * 1 - led on)
 **************************************************************/
-const static uint16_t LedStrober::SLOW_BLINK[SLOW_BLINK_SIZE] = {1, 500, 0, 500};
-const static uint16_t LedStrober::FAST_BLINK[FAST_BLINK_SIZE] = {1, 300, 0, 300};
-const static uint16_t LedStrober::STROBE_BLINK[STROBE_BLINK_SIZE] = {1, 70, 0, 70, 1, 70, 0, 70, 1, 70, 0, 950};
+const static uint16_t Strober::SLOW_BLINK[SLOW_BLINK_SIZE] = {1, 500, 0, 500};
+const static uint16_t Strober::FAST_BLINK[FAST_BLINK_SIZE] = {1, 300, 0, 300};
+const static uint16_t Strober::STROBE_BLINK[STROBE_BLINK_SIZE] = {1, 70, 0, 70, 1, 70, 0, 70, 1, 70, 0, 950};
   
-LedStrober::LedStrober() { index_ = 0; }
+Strober::Strober() { index_ = 0; }
 
 /**************************************************************
 * Goal: Set notes for play() method. 
 * Param: LedNotes enum
 **************************************************************/
-void LedStrober::setNotes(LedNotes notes)
+void Strober::setNotes(Notes notes)
 {
   if (curr_notes_ != notes)
   {
@@ -74,7 +74,7 @@ void LedStrober::setNotes(LedNotes notes)
 * be invoked in loop for continuouse play. 
 * Param: pin of led to blink
 **************************************************************/
-void LedStrober::play(uint16_t pin)
+void Strober::play(uint16_t pin)
 {
   if (index_ < notes_size_)
   {
