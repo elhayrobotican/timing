@@ -6,7 +6,7 @@ This readme file explain and demonstrate the use of these tools
 ## 1. Debounce 
 If you are using a physical button on your board, and trying to digitaRead() from it, you might want to use Debounce to make sure the reading is correct. Bouncing is the tendency of any two metal contacts in an electronic device to generate multiple signals as the contacts close or open; debouncing is any kind of hardware device or software that ensures that only a single signal will be acted upon for a single opening or closing of a contact) 
 
-### 1.1 Usage:
+### 1.1 Usage
 1. Create Debounce instance using Debounce(int pin, int interval) constructor. Interval param is the Debounce time interval between the start and end of reading process. 50 is usually a good choice (5 milliseconds).
 2. Invoke readState() to read the state of the component. Will return 1 or 0 when done reading, or -1 if reading is still in process.
 ----------------------------------------------------------------------
