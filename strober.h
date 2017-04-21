@@ -33,17 +33,17 @@
 
 #include "timer.h"
 
-class LedStrober
+class Strober
 {
 
 public:
-  enum LedNotes 
+  enum Notes 
   {
     BLINK_FAST,
     BLINK_SLOW,
     STROBE
   };
-  LedStrober();
+  Strober();
   void play(uint16_t pin);
   void setNotes(LedNotes notes);
 
@@ -53,7 +53,7 @@ private:
   uint16_t* notes_;
   size_t notes_size_;
   uint16_t index_;
-  LedNotes curr_notes_;
+  Notes curr_notes_;
  
   const static uint16_t SLOW_BLINK_SIZE = 4;
   const static uint16_t FAST_BLINK_SIZE = 4;
