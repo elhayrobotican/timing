@@ -1,6 +1,6 @@
 # Timing Library
 Timing library is a combination of time-based tools for fast and easy usage.
-This readme file explain and demonstrate the use of these tools
+This readme file explain and demonstrate the use of these tools. If you don't use all these tools at once, you may want to go to timing.h file, and delete the headers you don't use to reduce code size.
 
 ## Usage
 To use Timing library, include its file header in your code.

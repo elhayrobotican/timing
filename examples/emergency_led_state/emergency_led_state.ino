@@ -7,13 +7,13 @@
 ****************************************************************/
 
 
-#include "led_strober.h"
+#include "timing.h"
 
 #define INDICATOR_LED 13
 #define EMERGENCY_CH 'E'
 #define NORMAL_CH 'N'
 
-LedStrober strober;
+Strober strober;
 bool emergency_mode;
 
 void setup() 
@@ -22,7 +22,7 @@ void setup()
     pinMode(INDICATOR_LED, OUTPUT);
     emergency_mode = false;
     //set initial blinking notes
-    strober.setNotes(LedStrober::LedNotes::BLINK_SLOW);
+    strober.setNotes(Strober::Notes::BLINK_SLOW);
 }
 
 void loop() 
@@ -38,7 +38,7 @@ void loop()
     //set notes to STROBE for strobe blinking
     //(in this case: indicates emergency button 
     //was pressed and emergency mode is on)
-    strober.setNotes(LedStrober::LedNotes::STROBE);
+    strober.setNotes(Strober::Notes::STROBE);
   } 
   else if (ch == 'N' && emergency_mode)
   {
@@ -46,6 +46,6 @@ void loop()
     Serial.println("Emergency mode off");
     //set notes to BLINK_SLOW for slow blinking
     //(in this case indicates emergency mode is off)
-    strober.setNotes(LedStrober::LedNotes::BLINK_SLOW);
+    strober.setNotes(Strober::Notes::BLINK_SLOW);
   }
 }

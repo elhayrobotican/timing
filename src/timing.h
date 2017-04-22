@@ -39,6 +39,4 @@
 #include "debounce.h"
 #include "strober.h"
 
-
-
 #endif

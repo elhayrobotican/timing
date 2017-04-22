@@ -15,7 +15,7 @@
 * 4. Neither the name of the BlueSky Software nor the
 *    names of its contributors may be used to endorse or promote products
 *    derived from this software without specific prior written permission.
-* 
+*
 * THIS SOFTWARE IS PROVIDED BY BlueSky Software ''AS IS'' AND ANY
 * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -26,23 +26,23 @@
 * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-****************************************************************************/
+*****************************************************************/
 
 #include "strober.h"
 
 /**************************************************************
-* Predefined notes arrays. Odd indexes are async delays (in 
-* milliseconds), pair indexes are notes to play (0 - led off, 
+* Predefined notes arrays. Odd indexes are async delays (in
+* milliseconds), pair indexes are notes to play (0 - led off,
 * 1 - led on)
 **************************************************************/
-const static uint16_t Strober::SLOW_BLINK[SLOW_BLINK_SIZE] = {1, 500, 0, 500};
-const static uint16_t Strober::FAST_BLINK[FAST_BLINK_SIZE] = {1, 300, 0, 300};
-const static uint16_t Strober::STROBE_BLINK[STROBE_BLINK_SIZE] = {1, 70, 0, 70, 1, 70, 0, 70, 1, 70, 0, 950};
-  
+const uint16_t Strober::SLOW_BLINK[SLOW_BLINK_SIZE] = {1, 500, 0, 500};
+const uint16_t Strober::FAST_BLINK[FAST_BLINK_SIZE] = {1, 300, 0, 300};
+const uint16_t Strober::STROBE_BLINK[STROBE_BLINK_SIZE] = {1, 70, 0, 70, 1, 70, 0, 70, 1, 70, 0, 950};
+
 Strober::Strober() { index_ = 0; }
 
 /**************************************************************
-* Goal: Set notes for play() method. 
+* Goal: Set notes for play() method.
 * Param: LedNotes enum
 **************************************************************/
 void Strober::setNotes(Notes notes)
@@ -54,15 +54,15 @@ void Strober::setNotes(Notes notes)
     switch (notes)
     {
       case BLINK_SLOW:
-        notes_ = SLOW_BLINK;
+        notes_ = (uint16_t*)SLOW_BLINK;
         notes_size_ = SLOW_BLINK_SIZE;
         break;
       case BLINK_FAST:
-        notes_ = FAST_BLINK;
+        notes_ = (uint16_t*)FAST_BLINK;
         notes_size_ = FAST_BLINK_SIZE;
         break;
       case STROBE:
-        notes_ = STROBE_BLINK;
+        notes_ = (uint16_t*)STROBE_BLINK;
         notes_size_ = STROBE_BLINK_SIZE;
         break;
     }
@@ -70,8 +70,8 @@ void Strober::setNotes(Notes notes)
 }
 
 /**************************************************************
-* Goal: Play notes (blink led accordingly). This method must 
-* be invoked in loop for continuouse play. 
+* Goal: Play notes (blink led accordingly). This method must
+* be invoked in loop for continuouse play.
 * Param: pin of led to blink
 **************************************************************/
 void Strober::play(uint16_t pin)

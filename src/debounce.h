@@ -1,36 +1,35 @@
-// Created by Elchay Rauper
-// Last modified on 01/12/2015
+
 
 #ifndef DEBOUNCE_H
 #define DEBOUNCE_H
 
-#include "Arduino.h"
 #include "timer.h"
 
-//TODO: edit this lib
-//TODO: test this lib
+#define STILL_READING -1
 
 class Debounce
 {
 private:
-    Timer _timer;
-    int _pin;
+    Timer timer_;
+    uint8_t pin_;
+    uint16_t interval_;
 
 public:
-    Debounce(int interval)
-    {
-            _timer.setDelay(interval);
-    }
-    
-    //returns -1 while debounce still running, or the state when done
+
+    Debounce(int interval) { interval_ = interval; }
+
+    /***********************************************
+    * Return -1 if reading is in process, and 0 or 1
+    * when reading is done
+    ************************************************/
     int readState(int pin)
     {
-         _timer.start();
-
-        if (_timer.finished())
-            return digitalRead(pin); //done reading button state
-
-        return -1; //still reading button state
+      timer_.start(interval_);
+      
+      if (timer_.finished())
+        return digitalRead(pin); 
+      
+      return STILL_READING; 
     }
 };
 
