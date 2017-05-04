@@ -30,14 +30,15 @@
 
 #include "strober.h"
 
+
 /**************************************************************
 * Predefined notes arrays. Odd indexes are async delays (in
 * milliseconds), pair indexes are notes to play (0 - led off,
 * 1 - led on)
 **************************************************************/
-const uint16_t Strober::SLOW_BLINK[SLOW_BLINK_SIZE] = {1, 500, 0, 500};
-const uint16_t Strober::FAST_BLINK[FAST_BLINK_SIZE] = {1, 300, 0, 300};
-const uint16_t Strober::STROBE_BLINK[STROBE_BLINK_SIZE] = {1, 70, 0, 70, 1, 70, 0, 70, 1, 70, 0, 950};
+const uint16_t Strober::SLOW_BLINK_ARR[SLOW_BLINK_SIZE] = {1, 500, 0, 500};
+const uint16_t Strober::FAST_BLINK_ARR[FAST_BLINK_SIZE] = {1, 300, 0, 300};
+const uint16_t Strober::STROBE_BLINK_ARR[STROBE_BLINK_SIZE] = {1, 70, 0, 70, 1, 70, 0, 70, 1, 70, 0, 950};
 
 Strober::Strober() { index_ = 0; }
 
@@ -45,6 +46,16 @@ Strober::Strober() { index_ = 0; }
 * Goal: Set notes for play() method.
 * Param: LedNotes enum
 **************************************************************/
+void Strober::setNotes(uint16_t* notes, size_t notes_size)
+{
+  if (notes_ != notes)
+  {
+    notes_ = notes;
+    notes_size_ = notes_size;
+    timer_.reset();
+  }
+}
+
 void Strober::setNotes(Notes notes)
 {
   if (curr_notes_ != notes)
@@ -54,15 +65,15 @@ void Strober::setNotes(Notes notes)
     switch (notes)
     {
       case BLINK_SLOW:
-        notes_ = (uint16_t*)SLOW_BLINK;
+        notes_ = (uint16_t*)SLOW_BLINK_ARR;
         notes_size_ = SLOW_BLINK_SIZE;
         break;
       case BLINK_FAST:
-        notes_ = (uint16_t*)FAST_BLINK;
+        notes_ = (uint16_t*)FAST_BLINK_ARR;
         notes_size_ = FAST_BLINK_SIZE;
         break;
       case STROBE:
-        notes_ = (uint16_t*)STROBE_BLINK;
+        notes_ = (uint16_t*)STROBE_BLINK_ARR;
         notes_size_ = STROBE_BLINK_SIZE;
         break;
     }
