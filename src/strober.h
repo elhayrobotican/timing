@@ -45,16 +45,12 @@ public:
   };
   Strober();
   void play(uint16_t pin);
+  void setNotes(uint16_t* notes, size_t notes_size);
   void setNotes(Notes notes);
 
-   
   const static size_t SLOW_BLINK_SIZE = 4;
   const static size_t FAST_BLINK_SIZE = 4;
   const static size_t STROBE_BLINK_SIZE = 12;
-
-  const static uint16_t SLOW_BLINK[SLOW_BLINK_SIZE];
-  const static uint16_t FAST_BLINK[FAST_BLINK_SIZE];
-  const static uint16_t STROBE_BLINK[STROBE_BLINK_SIZE];
 
 private:
   Timer timer_;
@@ -64,7 +60,10 @@ private:
   uint16_t index_;
   Notes curr_notes_;
 
+  const static uint16_t SLOW_BLINK_ARR[SLOW_BLINK_SIZE];
+  const static uint16_t FAST_BLINK_ARR[FAST_BLINK_SIZE];
+  const static uint16_t STROBE_BLINK_ARR[STROBE_BLINK_SIZE];
+
   
 };
-
 #endif
