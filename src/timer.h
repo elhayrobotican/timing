@@ -50,7 +50,6 @@ public:
     void startOver();
     bool finished();
     void reset();
-    void delay(unsigned int seconds);
 };
 
 #endif
