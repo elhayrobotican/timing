@@ -79,8 +79,3 @@ bool Timer::finished()
 
 void Timer::reset() {started_ = false;}
 
-void Timer::delay(unsigned int period)
-{
-  unsigned long start = millis();
-  while (millis() - start < period) {};
-}
