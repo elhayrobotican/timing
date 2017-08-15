@@ -45,7 +45,6 @@ private:
 public:
     Timer();
     Timer(unsigned long period);
-    void setPeriod(unsigned long period);
     void start(unsigned long period);
     void startOver();
     bool finished();
